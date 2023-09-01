@@ -28,18 +28,13 @@ public class RocksDbService {
     }
 
     public String find(String key) {
-        String result = null;
         try {
-            var bytes = rocksDbDao.getData(key.getBytes());
-            if (bytes == null)
-                return null;
-
-            result = new String(bytes);
+            return rocksDbDao.getData(key.getBytes());
         } catch (RocksDBException e) {
             LOGGER.error("Error retrieving the entry in RocksDB from key: {}, cause: {}, message: {}", key, e.getCause(), e.getMessage());
         }
 
-        return result;
+        return null;
     }
 
     public void delete(String key) {

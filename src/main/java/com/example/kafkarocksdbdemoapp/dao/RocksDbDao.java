@@ -235,8 +235,10 @@ public class RocksDbDao implements DisposableBean {
         String result = null;
 
         try {
-            var bytes = rocksDB.get(key);
-            if (bytes == null) return null;
+            byte[] bytes = rocksDB.get(key);
+            if (bytes == null)
+                return null;
+
             result = new String(bytes);
 
             insertRocksdbReadOpStats(stopwatch, bytes);

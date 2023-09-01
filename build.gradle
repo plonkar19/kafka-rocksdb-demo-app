@@ -1,11 +1,10 @@
 plugins {
     id 'java'
-    id 'application'
-//    id 'io.spring.dependency-management' version "${SPRING_DEPENDENCY_MANAGEMENT_VERSION}"
+    id 'org.springframework.boot' version '2.7.8'
 }
 
 group = 'com.example'
-version = '0.0.1-SNAPSHOT'
+version = '1.0'
 
 java {
     sourceCompatibility = '11'
@@ -25,6 +24,8 @@ dependencies {
     implementation(group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: SPRING_BOOT_VERSION)
     implementation(group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: SPRING_BOOT_VERSION)
     testImplementation(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: SPRING_BOOT_VERSION)
+    testImplementation(group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: SPRING_BOOT_VERSION)
+    implementation(group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: SPRING_BOOT_VERSION)
 
     // RocksDB
     implementation(group: 'org.rocksdb', name: 'rocksdbjni', version: ROCKS_DB_VERSION)
@@ -42,5 +43,3 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
-
-mainClassName = 'com.example.kafkarocksdbdemoapp.KafkaRocksdbDemoAppApplication'
